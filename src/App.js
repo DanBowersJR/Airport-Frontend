@@ -1,38 +1,47 @@
-import React, { Component } from 'react';
-import Table from './components/Table.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from './logo.svg';
+// src/App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import logo from "./logo.svg";
 
-// 👇 centralize base URL
-import API_BASE_URL from './api';
+// Pages
+import City from "./pages/City";
+import Airport from "./pages/Airport";
+// (we’ll later add Passenger, Arrivals, etc.)
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            cities: [],
-        };
-    }
-
-    componentDidMount() {
-        fetch(`${API_BASE_URL}/api/cities`)
-            .then((res) => res.json())
-            .then((cities) => this.setState({ cities }))
-            .catch((err) => console.error('Error fetching cities:', err));
-    }
-
-    render() {
-        return (
+const App = () => {
+    return (
+        <Router>
             <div className="App">
-                <nav className="navbar navbar-light bg-light">
-                    <a className="navbar-brand" href="./">
-                        <img src={logo} alt="logo" width="40" /> City List
-                    </a>
+                <nav className="navbar navbar-light bg-light px-3">
+                    <Link className="navbar-brand" to="/">
+                        <img src={logo} alt="logo" width="40" /> Airport Demo
+                    </Link>
+                    <div className="btn-group">
+                        <Link className="btn btn-sm btn-outline-primary" to="/cities">
+                            Cities
+                        </Link>
+                        <Link className="btn btn-sm btn-outline-primary" to="/airports">
+                            Airports
+                        </Link>
+                        {/* later we’ll add:
+              <Link className="btn btn-sm btn-outline-success" to="/arrivals">
+                Arrivals
+              </Link>
+            */}
+                    </div>
                 </nav>
-                <Table cities={this.state.cities} />
+
+                <div className="p-3">
+                    <Routes>
+                        <Route path="/" element={<h2>Welcome to Airport Demo</h2>} />
+                        <Route path="/cities" element={<City />} />
+                        <Route path="/airports" element={<Airport />} />
+                    </Routes>
+                </div>
             </div>
-        );
-    }
-}
+        </Router>
+    );
+};
 
 export default App;

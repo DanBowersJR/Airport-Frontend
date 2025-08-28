@@ -1,7 +1,7 @@
-// src/components/ArrivalsTable.js
+// src/components/DeparturesTable.js
 import React from "react";
 
-const ArrivalsTable = ({ flights = [] }) => {
+const DeparturesTable = ({ flights = [] }) => {
     const hasData = Array.isArray(flights) && flights.length > 0;
 
     // helper to format datetime nicely
@@ -17,7 +17,7 @@ const ArrivalsTable = ({ flights = [] }) => {
             <tr>
                 <th>Flight #</th>
                 <th>Airline</th>
-                <th>Origin</th>
+                <th>Destination</th>
                 <th>Scheduled</th>
                 <th>Actual</th>
                 <th>Status</th>
@@ -26,10 +26,10 @@ const ArrivalsTable = ({ flights = [] }) => {
             <tbody>
             {hasData ? (
                 flights.map((f, i) => (
-                    <tr key={f.id ?? `arrival-${i}`}>
+                    <tr key={f.id ?? `departure-${i}`}>
                         <td>{f.flightNumber || "—"}</td>
                         <td>{f.airline?.name || f.airlineName || "—"}</td>
-                        <td>{f.originCode || "—"}</td>
+                        <td>{f.destinationCode || "—"}</td>
                         <td>{formatTime(f.scheduledTime)}</td>
                         <td>{formatTime(f.actualTime)}</td>
                         <td>{f.status || "SCHEDULED"}</td>
@@ -38,7 +38,7 @@ const ArrivalsTable = ({ flights = [] }) => {
             ) : (
                 <tr>
                     <td colSpan="6" className="text-center">
-                        No arrivals available
+                        No departures available
                     </td>
                 </tr>
             )}
@@ -47,4 +47,4 @@ const ArrivalsTable = ({ flights = [] }) => {
     );
 };
 
-export default ArrivalsTable;
+export default DeparturesTable;

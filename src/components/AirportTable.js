@@ -1,59 +1,39 @@
-// src/pages/Airport.jsx
-import React, { useEffect, useState } from "react";
-import API_BASE_URL from "../api";
+// src/components/AirportTable.js
+import React from "react";
 
-const Airport = () => {
-    const [airports, setAirports] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetch(`${API_BASE_URL}/api/airports`)
-            .then((res) => res.json())
-            .then((data) => {
-                setAirports(data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.error("Error fetching airports:", err);
-                setLoading(false);
-            });
-    }, []);
+const AirportTable = ({ airports = [] }) => {
+    const hasData = Array.isArray(airports) && airports.length > 0;
 
     return (
-        <div className="container mt-3">
-            <h2>Airports</h2>
-            <table className="table table-striped">
-                <thead>
+        <table className="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>City</th>
+            </tr>
+            </thead>
+            <tbody>
+            {hasData ? (
+                airports.map((a) => (
+                    <tr key={a.id ?? `airport-${a.code}`}>
+                        <td>{a.id}</td>
+                        <td>{a.code || "—"}</td>
+                        <td>{a.name || "—"}</td>
+                        <td>{a.city?.name || a.cityName || "—"}</td>
+                    </tr>
+                ))
+            ) : (
                 <tr>
-                    <th>Id</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>City</th>
+                    <td colSpan="4" className="text-center">
+                        No airports available
+                    </td>
                 </tr>
-                </thead>
-                <tbody>
-                {loading ? (
-                    <tr>
-                        <td colSpan="4">Loading...</td>
-                    </tr>
-                ) : airports.length > 0 ? (
-                    airports.map((a) => (
-                        <tr key={a.id ?? `airport-${a.code}`}>
-                            <td>{a.id}</td>
-                            <td>{a.code}</td>
-                            <td>{a.name}</td>
-                            <td>{a.city?.name || a.cityName || "—"}</td>
-                        </tr>
-                    ))
-                ) : (
-                    <tr>
-                        <td colSpan="4">No airports found.</td>
-                    </tr>
-                )}
-                </tbody>
-            </table>
-        </div>
+            )}
+            </tbody>
+        </table>
     );
 };
 
-export default Airport;
+export default AirportTable;

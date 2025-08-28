@@ -7,7 +7,9 @@ import logo from "./logo.svg";
 // Pages
 import City from "./pages/City";
 import Airport from "./pages/Airport";
-// (we’ll later add Passenger, Arrivals, etc.)
+import Arrivals from "./pages/Arrivals";
+import Departures from "./pages/Departures";
+import Passenger from "./pages/Passenger";   // ✅ new
 
 const App = () => {
     return (
@@ -24,11 +26,15 @@ const App = () => {
                         <Link className="btn btn-sm btn-outline-primary" to="/airports">
                             Airports
                         </Link>
-                        {/* later we’ll add:
-              <Link className="btn btn-sm btn-outline-success" to="/arrivals">
-                Arrivals
-              </Link>
-            */}
+                        <Link className="btn btn-sm btn-outline-success" to="/arrivals">
+                            Arrivals
+                        </Link>
+                        <Link className="btn btn-sm btn-outline-success" to="/departures">
+                            Departures
+                        </Link>
+                        <Link className="btn btn-sm btn-outline-warning" to="/passengers">
+                            Passengers
+                        </Link>
                     </div>
                 </nav>
 
@@ -37,6 +43,9 @@ const App = () => {
                         <Route path="/" element={<h2>Welcome to Airport Demo</h2>} />
                         <Route path="/cities" element={<City />} />
                         <Route path="/airports" element={<Airport />} />
+                        <Route path="/arrivals" element={<Arrivals />} />
+                        <Route path="/departures" element={<Departures />} />
+                        <Route path="/passengers" element={<Passenger />} /> {/* ✅ new */}
                     </Routes>
                 </div>
             </div>

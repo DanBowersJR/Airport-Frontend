@@ -1,6 +1,7 @@
 // src/pages/City.jsx
 import React, { useEffect, useState } from "react";
 import API_BASE_URL from "../api";
+import CityTable from "../components/CityTable"; // ✅ reuse component
 
 const City = () => {
     const [cities, setCities] = useState([]);
@@ -22,36 +23,11 @@ const City = () => {
     return (
         <div className="container mt-3">
             <h2>Cities</h2>
-            <table className="table table-striped">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>State</th>
-                    <th>Population</th>
-                </tr>
-                </thead>
-                <tbody>
-                {loading ? (
-                    <tr>
-                        <td colSpan="4">Loading...</td>
-                    </tr>
-                ) : cities.length > 0 ? (
-                    cities.map((c) => (
-                        <tr key={c.id ?? `city-${c.name}`}>
-                            <td>{c.id}</td>
-                            <td>{c.name}</td>
-                            <td>{c.state}</td>
-                            <td>{c.population}</td>
-                        </tr>
-                    ))
-                ) : (
-                    <tr>
-                        <td colSpan="4">No cities found.</td>
-                    </tr>
-                )}
-                </tbody>
-            </table>
+            {loading ? (
+                <p>Loading cities...</p>
+            ) : (
+                <CityTable cities={cities} />
+            )}
         </div>
     );
 };

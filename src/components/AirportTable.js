@@ -1,6 +1,19 @@
 // src/components/AirportTable.js
 import React from "react";
 
+const demoCityMap = {
+    YYZ: "Toronto",
+    YTZ: "Toronto",
+    JFK: "New York",
+    LGA: "New York",
+    LHR: "London",
+    LAX: "Los Angeles",
+    YVR: "Vancouver",
+    FRA: "Frankfurt",
+    ORD: "Chicago",
+    MIA: "Miami",
+};
+
 const AirportTable = ({ airports = [] }) => {
     const hasData = Array.isArray(airports) && airports.length > 0;
 
@@ -21,7 +34,12 @@ const AirportTable = ({ airports = [] }) => {
                         <td>{a.id}</td>
                         <td>{a.code || "—"}</td>
                         <td>{a.name || "—"}</td>
-                        <td>{a.city?.name || a.cityName || "—"}</td>
+                        <td>
+                            {a.city?.name ||
+                                a.cityName ||
+                                demoCityMap[a.code] ||
+                                "Demo City"}
+                        </td>
                     </tr>
                 ))
             ) : (

@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 // Pages (public)
+import Home from "./pages/Home";   // ✅ NEW
 import City from "./pages/City";
 import Airport from "./pages/Airport";
 import Arrivals from "./pages/Arrivals";
@@ -31,7 +32,7 @@ const App = () => {
                 <div className="flex-grow-1 p-3">
                     <Routes>
                         {/* Public routes */}
-                        <Route path="/" element={<h2>Welcome to FlightGrid</h2>} />
+                        <Route path="/" element={<Home />} />   {/* ✅ Updated */}
                         <Route path="/cities" element={<City />} />
                         <Route path="/airports" element={<Airport />} />
                         <Route path="/arrivals" element={<Arrivals />} />

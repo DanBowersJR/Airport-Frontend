@@ -2,13 +2,14 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";   // ✅ Add Bootstrap Icons
 
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 // Pages (public)
-import Home from "./pages/Home";   // ✅ NEW
+import Home from "./pages/Home";
 import City from "./pages/City";
 import Airport from "./pages/Airport";
 import Arrivals from "./pages/Arrivals";
@@ -32,7 +33,7 @@ const App = () => {
                 <div className="flex-grow-1 p-3">
                     <Routes>
                         {/* Public routes */}
-                        <Route path="/" element={<Home />} />   {/* ✅ Updated */}
+                        <Route path="/" element={<Home />} />
                         <Route path="/cities" element={<City />} />
                         <Route path="/airports" element={<Airport />} />
                         <Route path="/arrivals" element={<Arrivals />} />

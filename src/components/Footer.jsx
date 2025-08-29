@@ -15,10 +15,10 @@ const Footer = () => {
                 alignItems: "center",
             }}
         >
-            <div className="d-flex justify-content-center align-items-center flex-wrap">
+            <div className="d-flex justify-content-center align-items-center flex-wrap gap-3">
                 {/* Copyright */}
                 <p
-                    className="mb-0 me-3"
+                    className="mb-0"
                     style={{
                         fontFamily: "'Poppins', sans-serif",
                         fontSize: "1rem",
@@ -29,6 +29,58 @@ const Footer = () => {
                 >
                     © {new Date().getFullYear()} <strong>FlightGrid</strong> — All rights reserved.
                 </p>
+
+                {/* Social Media Icons */}
+                <div className="d-flex align-items-center gap-3">
+                    <a href="https://twitter.com" target="_blank" rel="noreferrer">
+                        <i
+                            className="bi bi-twitter"
+                            style={{
+                                fontSize: "1.3rem",
+                                color: "#fff",
+                                transition: "color 0.3s ease",
+                            }}
+                            onMouseEnter={(e) => (e.target.style.color = "#1DA1F2")}
+                            onMouseLeave={(e) => (e.target.style.color = "#fff")}
+                        />
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noreferrer">
+                        <i
+                            className="bi bi-instagram"
+                            style={{
+                                fontSize: "1.3rem",
+                                color: "#fff",
+                                transition: "color 0.3s ease",
+                            }}
+                            onMouseEnter={(e) => (e.target.style.color = "#E1306C")}
+                            onMouseLeave={(e) => (e.target.style.color = "#fff")}
+                        />
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noreferrer">
+                        <i
+                            className="bi bi-github"
+                            style={{
+                                fontSize: "1.3rem",
+                                color: "#fff",
+                                transition: "color 0.3s ease",
+                            }}
+                            onMouseEnter={(e) => (e.target.style.color = "#333")}
+                            onMouseLeave={(e) => (e.target.style.color = "#fff")}
+                        />
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                        <i
+                            className="bi bi-linkedin"
+                            style={{
+                                fontSize: "1.3rem",
+                                color: "#fff",
+                                transition: "color 0.3s ease",
+                            }}
+                            onMouseEnter={(e) => (e.target.style.color = "#0077B5")}
+                            onMouseLeave={(e) => (e.target.style.color = "#fff")}
+                        />
+                    </a>
+                </div>
 
                 {/* Admin Panel button */}
                 <NavLink

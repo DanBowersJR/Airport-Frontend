@@ -3,15 +3,15 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const BrandDot = () => (
-    <span
+const BrandIcon = () => (
+    <img
+        src="/favicon.ico"   // ✅ loads your favicon.ico from /public
+        alt="FlightGrid Logo"
         className="me-2"
         style={{
-            width: 16,
-            height: 16,
-            background: "#000", // Black dot for visibility
-            borderRadius: "50%",
-            display: "inline-block",
+            width: 24,
+            height: 24,
+            objectFit: "contain",
         }}
     />
 );
@@ -28,7 +28,7 @@ const Navbar = () => {
             <div className="container-fluid d-flex justify-content-between align-items-center">
                 {/* Brand */}
                 <NavLink className="navbar-brand d-flex align-items-center" to="/">
-                    <BrandDot />
+                    <BrandIcon />
                     <span
                         style={{
                             fontFamily: "'Poppins', sans-serif",
@@ -60,8 +60,8 @@ const Navbar = () => {
                                 (isActive ? "active-btn" : "inactive-btn")
                             }
                             style={({ isActive }) => ({
-                                background: isActive ? "#000" : "#fff", // active = black background
-                                color: isActive ? "#fff" : "#1e3a8a",   // text stays white on black
+                                background: isActive ? "#1e3a8a" : "#fff", // 🔹 deep blue instead of black
+                                color: isActive ? "#fff" : "#1e3a8a",
                                 borderRadius: "20px",
                                 padding: "6px 16px",
                                 textDecoration: "none",
